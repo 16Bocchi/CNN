@@ -4,9 +4,8 @@
 ## Details:
 For this assignment, I have decided to do option 2, which is to **"Build a machine learning system as a solution to a practical challenge"**.
 
-I have therefore decided to develop and train a system using the Modified National Institute of Standards and Technology (MNIST) database [available here:](https://www.kaggle.com/datasets/oddrationale/mnist-in-csv) 
+I have therefore decided to develop and train a system using the Modified National Institute of Standards and Technology (MNIST) database [available here:](https://www.kaggle.com/datasets/oddrationale/mnist-in-csv) <br>
 The MNIST database contains 60,000 training and 10,000 test images of normalised 28x28 pixel anti-aliased numbers (0-9), for which I will be using to train a Convoluted Neural Network (CNN) to recognise these digits.
-
 The format of these files is a CSV document (too big to include in repository), with each row consisting of 785 values. The first value is the label (0-9) and the remaining 784 values are the greyscale pixel values (0-255).
 
 ## Math:
