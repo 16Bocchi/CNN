@@ -14,8 +14,8 @@ INPUTSIZE = 784
 HIDDEN1 = 128
 HIDDEN2 = 64
 OUTPUTSIZE = 10
-EPOCHNUM = 100
-LEARNINGRATE = 0.001
+EPOCHNUM = 50
+LEARNINGRATE = 0.002
 
 # Pull in the data from training_data folder
 # Courtesy of MNIST, check readme for full information
@@ -132,36 +132,6 @@ class CNN:
 
         # print(params)
         return params['A3']
-
-    # Backward propagation
-
-    # def passBackwards(self, yTraining, nnOutput):
-    #     params = self.params
-    #     batch_size = yTraining.shape[0]  # Number of samples in the batch
-
-    #     changingWeights = {}
-
-    # # Calculate weight 3
-    # # starts with softmax undo
-
-    #     error = 2 * (nnOutput - yTraining) / batch_size * \
-    #         self.softmax(params['Z3'], needsDerive=True)
-    #     changingWeights['W3'] = np.dot(error, params['A2'].T)
-    #     changingWeights['B3'] = np.sum(error, axis=1, keepdims=True)
-
-    #     # Next is weight 2
-    #     error = np.dot(params['W3'].T, error) * \
-    #         self.sigmoid(params['Z2'], needsDerive=True)
-    #     changingWeights['W2'] = np.dot(error, params['A1'].T)
-    #     changingWeights['B2'] = np.sum(error, axis=1, keepdims=True)
-
-    #     # Next is weight 1
-    #     error = np.dot(params['W2'].T, error) * \
-    #         self.sigmoid(params['Z1'], needsDerive=True)
-    #     changingWeights['W1'] = np.dot(error, params['A0'].T)
-    #     changingWeights['B1'] = np.sum(error, axis=1, keepdims=True)
-
-    #     return changingWeights
 
     def passBackwards(self, yTraining, nnOutput):
         params = self.params
@@ -300,8 +270,7 @@ class CNN:
         for x in testData:
             testImg = np.asfarray(x[1:]).reshape((28, 28))
             plt.imshow(testImg, cmap="Greys", interpolation="None")
-            print("label: ", labels[index])
-            print("pred: ", pres[index])
+            print("label: ", labels[index], ", pred: ", pres[index])
             if (labels[index] == pres[index]):
                 hits += 1
             index += 1
@@ -314,14 +283,14 @@ learning = CNN(sizes=[INPUTSIZE, HIDDEN1, HIDDEN2,
 # print(dataTrain[0])
 # print(testData[0:5])
 
-learning.train(dataTrain, dataDev)
+# learning.train(dataTrain, dataDev)
 
-save_dict(learning.getParams(), "parameters")
+# save_dict(learning.getParams(), "parameters")
 
-# newParams = load_dict("parameters")
+newParams = load_dict("parameters")
 # print(learning.makePred(testData[0:5]))
 # print(learning.getLabel(testData[0:5]))
-learning.test(testData[0:5])
+learning.test(testData[0:])
 
 # learning.loadParams(newParams)
-learning.test(testData[0:5])
+# learning.test(testData[0:5])
