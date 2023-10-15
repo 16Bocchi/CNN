@@ -147,8 +147,7 @@ class CNN:
         # print(changingWeights['W3'].shape)
 
         # When changing bias, there is no need for outer matrix multiplication
-        changingWeights['B3'] = np.sum(2 * (nnOutput - yTraining) / nnOutput.shape[0]
-                                       * self.softmax(params['Z3'], needsDerive=True), axis=1, keepdims=True)
+        changingWeights['B3'] = np.sum(error, axis=1, keepdims=True)
 
         # print(changingWeights['B3'].shape)
 
